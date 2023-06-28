@@ -29,7 +29,7 @@ const imagesCarousel = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-
+console.log('imagesCarousel className Carosello', imagesCarousel, typeof imagesCarousel)
 const itemContainer = document.querySelector('.items');
 
 imagesCarousel.forEach((singleImagesObject, i, imagesArray) => {
@@ -64,10 +64,17 @@ const scrollUp = document.querySelector('.arrow-up');
 // FUNZIONE SCROLL UP
 scrollUp.addEventListener('click', function(){
     if(activeItemIndex < allItem.length - 1){
+        //dall'elemento attivo rimuoviamo Active.
         allItem[activeItemIndex].classList.remove("active");
-        activeItemIndex++; 
-        allItem[activeItemIndex].classList.add("active");
+        // DEBUG
+        console.log("l'elemento attivo finora era :", activeItemIndex);
 
+        //incrementiamo 
+        activeItemIndex++; 
+        // DEBUG
+        console.log("l'elemento attivo da ora è:", activeItemIndex);
+        //al nuovo elemento attivo la classe Active
+        allItem[activeItemIndex].classList.add("active");
     }
     else{
         //non fa nulla.
@@ -77,11 +84,18 @@ scrollUp.addEventListener('click', function(){
 
 // SCROLL DOWN
 const scrollDown = document.querySelector('.arrow-down');
-// FUNZIONE SCROLL UP
+// FUNZIONE SCROLL DOWN
 scrollDown.addEventListener('click', function(){
+
     if(activeItemIndex > 0){
+
         allItem[activeItemIndex].classList.remove("active");
+        // DEBUG
+        console.log("l'elemento attivo finora era :", activeItemIndex);
         activeItemIndex--; 
+        // DEBUG
+        console.log("l'elemento attivo da ora è:", activeItemIndex);
+
         allItem[activeItemIndex].classList.add("active");
 
     }
@@ -90,6 +104,7 @@ scrollDown.addEventListener('click', function(){
     }
 });
 
+//CICLO INFINITO CAROSELLO.
 
 
 
