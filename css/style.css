@@ -58,7 +58,7 @@
         text-align: center;
         line-height: 2rem;
         cursor: pointer;
-        z-index: 99999;
+        z-index: 1;
 }
 .carousel .arrow-up {
         top: 0;

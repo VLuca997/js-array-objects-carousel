@@ -56,50 +56,45 @@ imagesCarousel.forEach((singleImagesObject, i, imagesArray) => {
     `
 });
 
+// SCROLL UP
 
+let activeItemIndex = 0;
+const allItem = document.querySelectorAll('.item');
+const scrollUp = document.querySelector('.arrow-up');
+// FUNZIONE SCROLL UP
+scrollUp.addEventListener('click', function(){
+    if(activeItemIndex < allItem.length - 1){
+        allItem[activeItemIndex].classList.remove("active");
+        activeItemIndex++; 
+        allItem[activeItemIndex].classList.add("active");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//funzione per il click dei button, in modo che quando si arriva alal fine dell'array si ricominci da capo.
-function scrollUp(){
-    let activeImg = document.querySelector('.carousel-img.active');
-    activeImg.classList.remove('active')  // al click del pulsante rimuoviamo la classe active ddall'img
-
-    imgIndex--;
-    if(imgIndex < 0){
-        imgIndex = imagesCarousel.length - 1; //se l'indice diventa negativo,decrentiamo l'indice dell'immagine attuale per farla sparire.
     }
-
-    let newActive = document.querySelectorAll('.carousel-img')[imgIndex];// seleziono la nuova calsse 
-    newActive.classList.add('active'); // do la classe active alla nuova classe creata
-
-}
-
-function scrollDown(){
-    let activeImg = document.querySelector('.carousel-img.active');
-
-    activeImg.classList.remove('active');
-
-    imgIndex++;
-
-    if(imgIndex >= imagesCarousel.length - 1 ){
-        imgIndex = 0;
+    else{
+        //non fa nulla.
     }
-    let newActive = document.querySelectorAll('.carousel-img')[imgIndex];
-    newActive.classList.add('active');
+});
 
-}
-// Creo gli event listner per i button
-arrowUp.addEventListener('click', scrollUp);
-arrowDown.addEventListener('click', scrollDown);
+
+// SCROLL DOWN
+const scrollDown = document.querySelector('.arrow-down');
+// FUNZIONE SCROLL UP
+scrollDown.addEventListener('click', function(){
+    if(activeItemIndex > 0){
+        allItem[activeItemIndex].classList.remove("active");
+        activeItemIndex--; 
+        allItem[activeItemIndex].classList.add("active");
+
+    }
+    else{
+        //non fa nulla.
+    }
+});
+
+
+
+
+
+
+
+
+
