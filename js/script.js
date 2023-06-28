@@ -56,16 +56,24 @@ imagesCarousel.forEach((singleImagesObject, i, imagesArray) => {
     `
 });
 
-// SCROLL UP
+
 
 let activeItemIndex = 0;
+
 const allItem = document.querySelectorAll('.item');
+// SCROLL UP
 const scrollUp = document.querySelector('.arrow-up');
+// SCROLL DOWN
+const scrollDown = document.querySelector('.arrow-down');
+
+
 // FUNZIONE SCROLL UP
 scrollUp.addEventListener('click', function(){
+
+    //dall'elemento attivo rimuoviamo Active.
+    allItem[activeItemIndex].classList.remove("active");
+
     if(activeItemIndex < allItem.length - 1){
-        //dall'elemento attivo rimuoviamo Active.
-        allItem[activeItemIndex].classList.remove("active");
         // DEBUG
         console.log("l'elemento attivo finora era :", activeItemIndex);
 
@@ -73,38 +81,40 @@ scrollUp.addEventListener('click', function(){
         activeItemIndex++; 
         // DEBUG
         console.log("l'elemento attivo da ora è:", activeItemIndex);
-        //al nuovo elemento attivo la classe Active
-        allItem[activeItemIndex].classList.add("active");
     }
     else{
-        //non fa nulla.
+        activeItemIndex = 0; 
+        
     }
+    //al nuovo elemento attivo la classe Active
+    allItem[activeItemIndex].classList.add("active");
 });
 
 
-// SCROLL DOWN
-const scrollDown = document.querySelector('.arrow-down');
+
 // FUNZIONE SCROLL DOWN
 scrollDown.addEventListener('click', function(){
+    
+    allItem[activeItemIndex].classList.remove("active");
 
     if(activeItemIndex > 0){
 
-        allItem[activeItemIndex].classList.remove("active");
         // DEBUG
         console.log("l'elemento attivo finora era :", activeItemIndex);
+        
         activeItemIndex--; 
         // DEBUG
         console.log("l'elemento attivo da ora è:", activeItemIndex);
 
-        allItem[activeItemIndex].classList.add("active");
-
+        
     }
     else{
-        //non fa nulla.
+        activeItemIndex = allItem.length - 1; 
+
     }
+    allItem[activeItemIndex].classList.add("active");
 });
 
-//CICLO INFINITO CAROSELLO.
 
 
 
